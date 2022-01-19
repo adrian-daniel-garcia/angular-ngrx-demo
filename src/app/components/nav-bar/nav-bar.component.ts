@@ -20,7 +20,7 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     this.title$ = this.store.pipe(
       select(appTitleSelector)
-    )
+    );
   }
 
 }
