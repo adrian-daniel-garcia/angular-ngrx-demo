@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'two',
     component: ComponentTwoComponent
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./features/cart/cart.module').then( m => m.CartModule)
   }
 ];
 

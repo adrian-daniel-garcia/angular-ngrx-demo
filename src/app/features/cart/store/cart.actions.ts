@@ -11,6 +11,7 @@ export const cartDeleteItem = createAction(
   props<{itemId: string}>()
 );
 
-export const cartClear = createAction(
-  'Cart - Clear all items'
+export const cartSetContent = createAction(
+  'Cart - Set cart content',
+  props<{items: CartItem[]}>()
 );

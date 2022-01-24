@@ -1,0 +1,12 @@
+<div class="button-actions">
+  <button (click)="addOneItem()">Add 1 item</button>
+  <input #idToRemove>
+  <button (click)="removeItem(idToRemove.value)">Remove Item</button>
+  <button (click)="clearCart()">Clear cart</button>
+</div>
+
+<div class="cart-items" *ngIf="cartItems$">
+  <div *ngFor="let cartItem of cartItems$ | async">
+    {{ cartItem.movie.movie.name }}
+  </div>
+</div>

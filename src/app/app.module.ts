@@ -10,6 +10,9 @@ import { ComponentTwoComponent } from './components/component-two/component-two.
 import { appReducer } from './store/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { CartModule } from './features/cart/cart.module';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,8 +24,10 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     StoreModule.forRoot({ app: appReducer}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25 })
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 25 }),
   ],
   providers: [],
   bootstrap: [AppComponent]

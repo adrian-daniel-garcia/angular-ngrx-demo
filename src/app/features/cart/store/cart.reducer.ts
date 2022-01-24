@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { CartState } from './cart-store.model';
-import { cartAddItem, cartClear, cartDeleteItem } from './cart.actions';
+import { cartSetContent } from './cart.actions';
 
 
 export const cartInitialState: CartState = { items: [] };
@@ -8,33 +8,12 @@ export const cartInitialState: CartState = { items: [] };
 const _cartReducer = createReducer(
   cartInitialState,
 
-  on(cartAddItem, (state, { item }) => {
-    const items = [...state.items];
-    items.push(item);
-    return {
+  on(cartSetContent, (state, { items }) => {
+      return {
       ...state,
-      items
+      items,
     };
-  }),
-
-  on(cartDeleteItem, (state, { itemId }) => {
-    const items = [...state.items];
-    const itemIndex = items.findIndex( cartItem => cartItem.id === itemId );
-    items.splice(itemIndex, 1);
-
-    return {
-      ...state,
-      items
-    };
-  }),
-
-  on(cartClear, (state) => {
-    return {
-      ...state,
-      items: []
-    };
-  }),
-
+  })
 );
 
 export function cartReducer(state: any, action: any) {
